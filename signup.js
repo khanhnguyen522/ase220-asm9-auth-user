@@ -35,7 +35,10 @@ if (userExists(allFileContents, email)) {
       );
     }
   } while (!validPassword);
+  signUp(email, password);
+}
 
+function signUp(email, password) {
   const userIdPassword = `${email},${password}\n`;
   fs.appendFile("userCredentials.csv", userIdPassword, (err) => {
     if (err) {

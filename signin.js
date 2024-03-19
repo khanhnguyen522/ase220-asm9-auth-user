@@ -18,15 +18,16 @@ password = prompt("Enter your password: ");
 
 const allFileContents = fs.readFileSync("userCredentials.csv", "utf-8");
 
-console.log(checkUserCredentials(allFileContents, email, password));
+checkUserCredentials(allFileContents, email, password);
 
 function checkUserCredentials(fileContents, userEmail, userPassword) {
   let lines = fileContents.split(/\r?\n/);
   for (let i = 0; i < lines.length; i++) {
     let lineContents = lines[i].split(",");
     if (lineContents[0] == userEmail && lineContents[1] == userPassword) {
-      return "Successfully logged in!";
+      console.log("Successfully logged in!");
+      return;
     }
   }
-  return "Login failed. Please check the email and password again.";
+  console.log("Login failed. Please check the email and password again.");
 }
