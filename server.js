@@ -23,8 +23,8 @@ const server = http.createServer((req, res) => {
   } else if (req.method === "POST") {
     if (req.url === "/api/signup" || req.url === "/api/signin") {
       let body = "";
-      req.on("data", (chunk) => {
-        body += chunk.toString();
+      req.on("data", (data) => {
+        body += data.toString();
         console.log(body);
       });
       req.on("end", () => {
